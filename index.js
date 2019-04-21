@@ -21,7 +21,7 @@ client.on('message', function (topic, message) {
 
 client.on('connect', () => {
     client.publish('dh/request', authObj.toString() , '{"action":"notification/insert"}');
-    client.publish('dh/notification/SN/Cameras/SD/test', notificationObject);
+    client.publish('dh/notification/SN/Cameras/SD/test', authObj);
     client.subscribe('dh/response/authenticate@' + client.options.clientId);
     console.log("Connected and Authenticated");
     
