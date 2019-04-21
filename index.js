@@ -20,10 +20,10 @@ client.on('message', function (topic, message) {
 });
 
 client.on('connect', () => {
+    client.publish('dh/request', authObj.toString() , '{"action":"notification/insert"}');
+    client.publish('dh/notification/SN/Cameras/SD/test', notificationObject);
     client.subscribe('dh/response/authenticate@' + client.options.clientId);
-    
-    client.publish('dh/request', authObj.toString());
-    console.log("Connected");
+    console.log("Connected and Authenticated");
     
 });
 
